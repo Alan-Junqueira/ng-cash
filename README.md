@@ -24,16 +24,7 @@ No meu frontend por ex, está assim o Dockerfile: WORKDIR /home/alan/development
 
 No seu caso, deve modificar para especificar o local que esta na sua maquina.
 
-Verifique se a formulação das pastas está identica à formulação deste projeto.
-
--frontend
--backend
--.dockerignore
--docker-compose.yml
-
-Caso esteja...
-
-Na raiz, digite na pasta que esta o docker-compose.yml:
+Com tudo configurado, digite na pasta que esta o docker-compose.yml:
 
 docker-compose build (aguarde a criação)
 docker-compose up ou docker-compose up -d
