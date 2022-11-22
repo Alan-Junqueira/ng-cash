@@ -1,0 +1,47 @@
+version: '3'
+
+services:
+  frontend:
+      build: ./frontend
+      depends_on:
+        - backend
+        - db
+      image: node:18.12
+
+      ports:
+        - "3000:3000"
+
+      networks:
+        - ng-cash
+
+  backend:
+    build: ./backend
+
+    image: node:18.12
+    depends_on:
+      - db
+
+    ports:
+      - "3333:3333"
+    
+    environment:
+      DATABASE_URL: "postgres://postgres:postgres@db:5432/ng-cash"
+      NODE_ENV: "development"
+      JWT_SECRET_KEY: "123"
+
+    networks:
+      - ng-cash
+  db:
+    image: postgres
+
+    environment:
+      POSTGRES_PASSWORD: "postgres"
+    ports:
+      - "49554:5432"
+
+    networks:
+      - ng-cash
+
+networks:
+  ng-cash:
+    driver: bridge
